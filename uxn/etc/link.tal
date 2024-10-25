@@ -1,0 +1,29 @@
+|10 @Console &vector $2 &read $1 &pad $5 &write $1 &error $1
+
+|0100
+
+	;task1 #f0 DEO2
+	;task2 #f2 DEO2
+	#0000 #f0 DEO2k INC INC DEO2
+	;end-txt print-text
+	#800f DEO
+
+BRK 
+
+@task1 ( -> )
+	;t1 print-text
+BRK 
+
+@task2 ( -> )
+	;t2 print-text
+BRK 
+
+@print-text ( str* -- )
+	( send ) LDAk .Console/write DEO
+	( loop ) INC2 LDAk ?print-text
+	POP2
+JMP2r
+
+@t1 "AAAAAAAAAAAAAAAA 00
+@t2 "BBBBBBBBBBBBBBBB 00
+@end-txt 0a "Done. 0a
