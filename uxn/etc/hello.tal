@@ -1,6 +1,0 @@
-%square { DUP MUL ?{ } }
-
-|100
-	#12 square
-BRK
-
